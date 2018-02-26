@@ -1,0 +1,19 @@
+{
+  "name": "print-date",
+  "version": "0.0.4",
+  "description": "Print out date string for ES6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axui/print-date"
+  },
+  "keywords": [
+    "dateFormat",
+    "printDate"
+  ],
+  "author": "tom@axisj.com",
+  "license": "ISC"
+}

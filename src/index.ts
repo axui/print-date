@@ -35,7 +35,15 @@ function localDate(yy, mm, dd, hh?: number, mi?: number, ss?: number) {
 
 export class PrintDate {
 
-  public static WeekNames: AXIWeekName[];
+  public static WeekNames: AXIWeekName[] = [
+    { label: 'SUN' },
+    { label: 'MON' },
+    { label: 'TUE' },
+    { label: 'WED' },
+    { label: 'THU' },
+    { label: 'FRI' },
+    { label: 'SAT' }
+  ];
 
   public static setConfig(config) {
 
@@ -115,10 +123,10 @@ export class PrintDate {
       nS = padStart(d.getSeconds(), 2, '0');
       nDW = d.getDay();
 
-      yre = /[^y]*(yyyy)[^y]*/gi;
+      yre = /[^y]*(y{1,4})[^y]*/gi;
       yre.exec(fStr);
       regY = RegExp.$1;
-      mre = /[^m]*(MM)[^m]*/g;
+      mre = /[^M]*(MM)[^M]*/g;
       mre.exec(fStr);
       regM = RegExp.$1;
       dre = /[^d]*(dd)[^d]*/gi;
@@ -127,17 +135,17 @@ export class PrintDate {
       hre = /[^h]*(hh)[^h]*/gi;
       hre.exec(fStr);
       regH = RegExp.$1;
-      mire = /[^m]*(mm)[^i]*/g;
+      mire = /[^m]*(mm)[^m]*/g;
       mire.exec(fStr);
       regMI = RegExp.$1;
       sre = /[^s]*(ss)[^s]*/gi;
       sre.exec(fStr);
       regS = RegExp.$1;
-      dwre = /[^d]*(dw)[^w]*/gi;
+      dwre = /[^W]*(W{1,2})[^W]*/gi;
       dwre.exec(fStr);
       regDW = RegExp.$1;
 
-      if (regY === 'yyyy') {
+      if (regY === 'y' || regY === 'yy' || regY === 'yyy' || regY === 'yyyy') {
         fStr = fStr.replace(regY, right(nY, regY.length));
       }
       if (regM === 'MM') {
@@ -157,7 +165,10 @@ export class PrintDate {
       if (regS === 'ss') {
         fStr = fStr.replace(regS, nS);
       }
-      if (regDW == 'dw') {
+      if (regDW === 'W') {
+        fStr = fStr.replace(regDW, PrintDate.WeekNames[nDW].label.substr(0, 1));
+      }
+      if (regDW === 'WW') {
         fStr = fStr.replace(regDW, PrintDate.WeekNames[nDW].label);
       }
       return fStr;

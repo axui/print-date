@@ -11,7 +11,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./",
     "paths": {
-      "print-date/*": ["src/*"],
+      "print-date": ["src"],
       "@root/*": ["/*"]
     },
     "typeRoots" : [

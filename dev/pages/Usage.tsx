@@ -12,10 +12,7 @@ export const Usage = (props) => (
     <Segment basic padded>
       <Header as='h2' dividing>NPM</Header>
       <Segment>
-        <pre>$ npm install {pkg.name}-es -S</pre>
-      </Segment>
-      <Segment>
-        <pre>$ npm install {pkg.name}-ts -S</pre>
+        <pre>$ npm install {pkg.name} -S</pre>
       </Segment>
     </Segment>
   </Container>
