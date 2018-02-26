@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "noLib": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./",
+    "paths": {
+      "print-date/*": ["src/*"],
+      "@root/*": ["/*"]
+    },
+    "typeRoots" : [
+      "./node_modules/@types",
+      "./dev/typings",
+      "./src/typings"
+    ]
+  },
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules", "dist"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useCache": true
+  }
+}

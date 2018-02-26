@@ -1,0 +1,3 @@
+interface AXIWeekName {
+  label: string;
+}
