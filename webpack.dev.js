@@ -1,15 +1,15 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const path = require( 'path' );
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+const webpack = require( 'webpack' );
 const basePath = __dirname;
 
 module.exports = {
-  context: path.join(basePath, '.'),
+  context: path.join( basePath, '.' ),
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [ '.js', '.ts', '.tsx' ],
     alias: {
-      'print-date': path.resolve(__dirname, 'src'),
-      '@root': path.resolve(__dirname, '')
+      'print-date': path.resolve( __dirname, 'src' ),
+      '@root': path.resolve( __dirname, '' )
     }
   },
   entry: {
@@ -21,7 +21,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(basePath, './docs'),
+    path: path.join( basePath, './docs' ),
     filename: '[name].[hash].js',
     publicPath: '/'
   },
@@ -32,13 +32,21 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'awesome-typescript-loader',
         options: {
-          useBabel: true
+          "useBabel": true,
+          "babelOptions": {
+            "babelrc": false, /* Important line */
+            "presets": [ [ "env", {
+              "targets": {
+                "browsers": [ "last 2 versions", "> 1% in KR" ]
+              }
+            } ], "react", "stage-0" ],
+          }
         }
       },
       {
         test: /\.scss$/,
         use: [
-          {loader: 'style-loader'},
+          { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
@@ -52,14 +60,14 @@ module.exports = {
               camelCase: true
             }
           },
-          {loader: 'sass-loader'}
+          { loader: 'sass-loader' }
         ]
       },
       {
         test: /\.css$/,
         use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'}
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
         ]
       },
       {
@@ -98,21 +106,21 @@ module.exports = {
     hot: true,
     historyApiFallback: {
       rewrites: [
-        {from: /./, to: '/'}
+        { from: /./, to: '/' }
       ]
     }
   },
   plugins: [
     //Generate index.html in /dist => https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin( {
       filename: 'index.html', //Name of file in ./dist/
       template: './dev/index.html', //Name of template in ./src
       favicon: './dev/assets/favicon.ico',
       hash: true
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
-    }),
+    } ),
+    new webpack.optimize.CommonsChunkPlugin( {
+      names: [ 'vendor', 'manifest' ],
+    } ),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ]

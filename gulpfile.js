@@ -6,6 +6,7 @@ const shell = require( 'gulp-shell' );
 
 const ts = require( "gulp-typescript" );
 const tsProject = ts.createProject( 'tsconfig.json' );
+const babel = require( 'gulp-babel' );
 
 // 전역 오브젝트 모음
 const fnObj = {
@@ -26,6 +27,9 @@ gulp.task( 'default', function () {
 gulp.task( 'dist-ES', function () {
   return gulp.src( [ fnObj.paths.src + '/**/*.ts', fnObj.paths.src + '/**/*.tsx' ] )
     .pipe( tsProject() )
+    .pipe( babel( {
+      "presets": ['env']
+    } ) )
     .pipe( gulp.dest( fnObj.paths.dist ) );
 } );
 
