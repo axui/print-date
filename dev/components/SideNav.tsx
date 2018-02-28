@@ -31,9 +31,6 @@ export class SideNav extends React.Component<any, any> {
             <Menu.Item as={NavLink} to='/introduction' activeClassName='active'>
               Introduction
             </Menu.Item>
-            <Menu.Item as={NavLink} to='/usage' activeClassName='active'>
-              Usage
-            </Menu.Item>
             <Menu.Item as='a' href={pkg.repository}>
               <Icon name='github' /> GitHub
             </Menu.Item>

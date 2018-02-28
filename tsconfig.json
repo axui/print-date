@@ -12,7 +12,7 @@
     "baseUrl": "./",
     "paths": {
       "print-date": ["src"],
-      "@root/*": ["/*"]
+      "@root/*": ["./*"]
     },
     "typeRoots" : [
       "./node_modules/@types",
