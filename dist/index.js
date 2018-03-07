@@ -9,19 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 exports.printDate = printDate;
 
-var _isString = require('lodash-es/isString');
-
-var _isString2 = _interopRequireDefault(_isString);
-
-var _padStart = require('lodash-es/padStart');
-
-var _padStart2 = _interopRequireDefault(_padStart);
-
-var _assign = require('lodash-es/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _lodash = require('lodash');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -76,7 +64,7 @@ function getDayOfWeek(date) {
 function pad(s) {
     var l = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
 
-    return (0, _padStart2.default)(s, l, '0');
+    return (0, _lodash.padStart)(s, l, '0');
 }
 
 var PrintDate = exports.PrintDate = function () {
@@ -102,7 +90,7 @@ var PrintDate = exports.PrintDate = function () {
                 va = void 0;
             var ISO_8601 = /^\d{4}(-\d\d(-\d\d(T\d\d:\d\d(:\d\d)?(\.\d+)?(([+-]\d\d:\d\d)|Z)?)?)?)?$/i;
             var ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i;
-            if ((0, _isString2.default)(date)) {
+            if ((0, _lodash.isString)(date)) {
                 if (date.length > 15) {
                     if (ISO_8601_FULL.test(date) || ISO_8601.test(date)) {
                         currDate = new Date(date);
@@ -205,7 +193,7 @@ var PrintDate = exports.PrintDate = function () {
     }], [{
         key: 'setI18n',
         value: function setI18n(i18n) {
-            return PrintDate.i18n = (0, _assign2.default)({}, PrintDate.i18n, i18n);
+            return PrintDate.i18n = (0, _lodash.assign)({}, PrintDate.i18n, i18n);
         }
     }]);
 

@@ -1,6 +1,4 @@
-import isString from 'lodash-es/isString';
-import padStart from 'lodash-es/padStart';
-import assign from 'lodash-es/assign';
+import {assign, isString, padStart} from 'lodash';
 
 const token = /d{1,4}|E{1,4}|M{1,4}|yy(?:yy)?|([HhmsAa])\1?|[LloSzWN]|"[^"]*"|'[^']*'/g;
 const timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g;
@@ -12,18 +10,18 @@ function right(str: string, pos: number): string {
 
 function localDate(yy, mm, dd, hh?: number, mi?: number, ss?: number) {
   let _ud;
-  if ( mm < 0 )
+  if (mm < 0)
     mm = 0;
-  if ( typeof hh === 'undefined' )
+  if (typeof hh === 'undefined')
     hh = 12;
-  if ( typeof mi === 'undefined' )
+  if (typeof mi === 'undefined')
     mi = 0;
-  _ud = new Date( Date.UTC( yy, mm, dd || 1, hh, mi, ss || 0 ) );
-  if ( mm === 0 && dd === 1 && _ud.getUTCHours() + (_ud.getTimezoneOffset() / 60) < 0 ) {
-    _ud.setUTCHours( 0 );
+  _ud = new Date(Date.UTC(yy, mm, dd || 1, hh, mi, ss || 0));
+  if (mm === 0 && dd === 1 && _ud.getUTCHours() + (_ud.getTimezoneOffset() / 60) < 0) {
+    _ud.setUTCHours(0);
   }
   else {
-    _ud.setUTCHours( _ud.getUTCHours() + (_ud.getTimezoneOffset() / 60) );
+    _ud.setUTCHours(_ud.getUTCHours() + (_ud.getTimezoneOffset() / 60));
   }
   return _ud;
 }
